@@ -70,8 +70,8 @@ class PortStatusViewTests(TestCase):
         response = port_status_view(request)
         self.assertEqual(response.status_code, 200)
 
-# test_port_status_view_data: Testuje zawartość odpowiedzi HTTP zwróconej przez widok.
-    # Zamiast bezpośredniego sprawdzania context, sprawdzamy czy klucz 'seaports_statuses' nie znajduje się w zawartości odpowiedzi
+# Testuje zawartość odpowiedzi HTTP zwróconej przez widok.
+# Zamiast bezpośredniego sprawdzania context, sprawdzamy czy klucz 'seaports_statuses' nie znajduje się w zawartości odpowiedzi
     def test_port_status_view_data(self):
         request = self.factory.get('/port-status/')
         response = port_status_view(request)
