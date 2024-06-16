@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MPO-SP</title>
+<style>
+  /* Styl dla tła strony */
+  body {
+    background-color: black; /* Czarne tło */
+    color: white; /* Biały kolor tekstu dla lepszej czytelności */
+    font-family: Arial, sans-serif; /* Ustawienie domyślnej czcionki */
+  }
+
+  /* Styl dla statusów */
+  .message-container {
+    margin-bottom: 10px;
+  }
+
+  .status-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .green-box {
+    background-color: lightgreen; /* Kolor tła dla statusu aktywnego */
+  }
+
+  .red-box {
+    background-color: lightcoral; /* Kolor tła dla statusu nieaktywnego */
+  }
+
+  .message-text {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  h1 {
+    color: white; /* Ustawienie koloru tekstu nagłówka */
+  }
+
+  h2.message-text {
+    color: white; /* Ustawienie koloru tekstu dla wiadomości */
+  }
+</style>
+</head>
+<body>
+<h1>System monitorujący stan portów</h1>
+
+{% for port_status in seaports_statuses %}
+  <!-- Wiadomość dla każdego portu -->
+  <div class="message-container">
+    <div class="status-box {% if port_status.status == 1 %}green-box{% else %}red-box{% endif %}"></div>
+    <h2 class="message-text">{{ port_status.status_display }}</h2>
+  </div>
+{% endfor %}
+
+</body>
+</html>
